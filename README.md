@@ -6,6 +6,7 @@ All labs contains
 - ipynb files : implemented algorithm with Pytorch
 - final report : analyzing results
 
+All reports are written in English except pre-report of Lab1.
 
 # index
 - Lab1: implementing VGGNet and ResNet architectures
