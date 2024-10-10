@@ -174,7 +174,7 @@ Test Accuracy(\%) & 91.2 & 85.8333   \\ \hline
 
 \begin{figure}[htb!]
 	\includegraphics[width=\linewidth]{images/resnet_fig.png}
-	\caption{Architecture of resnet50 for CIFAR-10\cite{cifar10}. solid line means the normal residual connection(left of \ref{fig:resconnection}, and dotted line means the residual connection with channel expanding}
+	\caption{Architecture of resnet50 for CIFAR-10\cite{cifar10}. solid line means the normal residual connection(left part of \ref{fig:resconnection}), and dotted line means the residual connection with channel expanding(right part of \ref{fig:resconnection})}
  \label{fig:resnetfig}
 	\vspace{-2mm}
 \end{figure}
@@ -201,7 +201,7 @@ For both models, The training loss graph is fluctuating, which might suggest iss
 \section{Conclusion}
 In this lab, We implemented The VGGNet16 and ResNet50 using Pytorch, training and testing the models with first 3-categories CIFAR-10 images. Additionally, we compared the performance of VGGNet and ResNet on the CIFAR-10 image classification task. Our experiments showed that the test accuracy of both models greater than 85\%, and VGG16 achieved a lower training loss with higher testing accuracy.
 
-This result suggests that deeper layers improve the performance, ResNet50 need more data because of it has more parameters, and VGGNet may be more suitable for less complex dataset lick CIFAR-10. However, it is useful to consider ResNet's advantages like residual connections. ResNet may become more powerful on larger image datasets. Therefore, It is important that selecting appropriate architectures based on the characteristic like size of the datasets.
+This result suggests that deeper layers improve the performance, ResNet50 need more data because of it has more parameters, and VGGNet may be more suitable for less complex dataset like CIFAR-10. However, it is useful to consider ResNet's advantages like residual connections. ResNet may become more powerful on larger image datasets. Therefore, It is important that selecting appropriate architectures based on the characteristic like size of the datasets.
 
 \newpage
 \bibliography{egbib}
