@@ -13,3 +13,5 @@ All reports are written in English except pre-report of Lab1.
     - VGGNet: [Karen Simonyan and Andrew Zisserman. Very deep convolutional networks for large-scale image recognition, 2015](https://arxiv.org/abs/1409.1556)
     - ResNet: [Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun. Deep residual learning for image recognition, 2015.](https://arxiv.org/abs/1512.03385)
 
+- Lab2: Object Detection with implementing YOLO architectures
+    - YOLO: [Joseph Redmon, Santosh Divvala, Ross Girshick and Ali Farhadi. You Only Look Once: Unified, Real-Time Object Detection. 2015](https://arxiv.org/abs/1506.02640)
