@@ -63,7 +63,7 @@ The loss function for training YOLO is figure \ref{lossfunction}. $\mathbf{1}^{o
     \item For the responsible bounding box predictor $j$ in cell $i$ (the cell $i$ contains object), get loss of $\sqrt{w}$ and $\sqrt{h}$. For reflecting deviation of small boxes more, calculate loss of square root (\ref{training})
     \item For the responsible bounding box predictor $j$ in cell $i$ (the cell $i$ contains object), get loss of confidence score $(C_i=1)$
     \item For the responsible bounding box predictor $j$ in cell $i$ (the cell $i$ \textbf{doesn't} contain object), get loss of confidence score $(C_i=0)$
-    \item For cell that contains object, get loss of conditional class probability (for correct class, $p_i(c)=1$
+    \item For cell that contains object, get loss of conditional class probability (for correct class, $p_i(c)=1$)
 \end{enumerate}
 
 \begin{figure}[t]
