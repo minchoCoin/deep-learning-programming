@@ -1,0 +1,89 @@
+% Use class option [extendedabs] to prepare the 1-page extended abstract.
+\documentclass[extendedabs]{bmvc2k}
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{kotex}
+% for the fancy \koTeX logo
+\usepackage{kotex-logo}
+\usepackage{mathtools}  % brings in amsmath, also some improvements
+\usepackage{amssymb} % brings in amsfonts, incl \square
+% Document starts here
+\begin{document}
+
+
+\title{Faster R-CNN pre-report}
+\addauthor{
+Taehun Kim$^{1}$
+}{}{1}
+
+\addinstitution{
+$^1$ Department of Computer Science and Engineering, Pusan National University.  
+}
+ 
+
+\maketitle
+\noindent
+
+
+\section{Introduction}
+Region-based CNNs makes good performance(mAP) for object detection, and achieves near real-time rates when ignoring the time spent on computing region proposals. Computing region proposals using CPU like Selective Search\cite{selsearch} or EdgeBoxes\cite{edgebox} is the bottleneck of Region-based CNNs.
+
+Faster R-CNN\cite{fasterrcnn}, however, computes proposals with a deep convoluional neural network(Region Proposal Networks, RPNs). RPNs share convolutional layers that extract features from image with object detection network like Fast R-CNN\cite{fastrcnn}. The paper\cite{fasterrcnn} says this make the cost for computing proposals small(10ms per image).
+
+these advances make Faster R-CNN\cite{fasterrcnn} won the 1st-place entries in the track of ImageNet detection, ImageNet localization, COCO detection, and COCO segmentation in ILSVRC and COCO 2015 competitions.
+
+this report summarize the Fast R-CNN paper\cite{fasterrcnn} focusing on the architecture of the RPNs.
+
+\section{Faster R-CNN}
+Faster R-CNN\cite{fasterrcnn} has two modules. The first is Region Proposal Networks, and the second is the Fast R-CNN\cite{fastrcnn} detector that classify the object from the proposed regions. The entire system is a unified network using attention mechanisms. It means that the RPN tells the detector where to look.
+\subsection{Region Proposal Networks}
+A Region Proposal Network can takes an image of any size as input because It is fully convolutional network. Also, this network share convolution layers (that extract features from image) with a Fast R-CNN.
+
+The paper\cite{fasterrcnn} add a small network over the shared feature maps. This small network takes as input a fixed $n\times n$ windows of the outputs of the last shared conv layer. The small network maps windows to a lower dimensional feature(implemented with a $n\times n$ conv layer, which maps $n\times n\times d$ to $1 \times 1 \times d$), and this features is fed into two fully connected layers(implemented with a $1\times1$ conv layer, which change number of channels). one is a box coordinates regression layer, and another is box scores classification layer. Note that box scores indicates probability that there is an object in the box or not an object in the box.
+\subsubsection{Anchors}
+At each sliding-window location, The network simultaneously predict multiple region proposals that has different scale and aspect ratio each other. If $k$ is denoted the number of maximum possible proposals for each sliding windows, then output size of the box coordinates regression layer is $4k$, and the output size of the box scores classification layer is $2k$. The k proposals is generated from the k reference box($anchors$) that has different size and aspect ratio each other, and centered at the sliding window.
+
+If the convolutional feature map is $H\times W\times C$, this feature map is mapped to $H\times W\times C$ by $n\times n$ conv layer with padding, then the output of box regression layer is $H\times W\times 4k$ and the output of the box classification layer is $H\times W\times 2k$.
+
+these method relies on a single images, feature maps and sliding window. Also it enable that RPNs share features with detector without rescaling.
+
+\subsubsection{Loss Function}
+For training RPNs, We should label box scores and box coordinates to each anchor of each sliding windows. For box scores(that represents whether there is an object or not), the paper\cite{fasterrcnn} assign a positive label to two kind of anchors. One is the anchor(s) with the highest IoU overlap with a ground-truth box, another is an anchor(s) that has an IoU overlap higher than 0.7 with any ground-truth box. First condition is adopted because it is possible that there isn't anchor that has an IoU higher than 0.7 with the ground-truth box. The paper\cite{fasterrcnn} assign a negative label to a anchor that has IoU lower than 0.3 for all ground-truth boxes. Note that only anchor that assigned as positive or negative is used for loss function.
+
+For box coordinate regression, the paper\cite{fasterrcnn} calculate coordinate as follow:
+\begin{align}
+t_x = (x-x_a)/w_a, t_y = (y-y_a)/h_a, \\
+t_w = log(w/w_a), t_h = log(h/h_a), \\
+t^*_x = (x^* - x_a)/w_a, t^*_y = (y^*-y_a)/h_a, \\
+t^*_w = log(w^*/w_a), t^*_h = log(h*/h_a)
+\end{align}
+where x,y is center coordinates of the box's center, w and h denotes width and height of the box. Variable $\square, \square_a, \square^*$ are for predicted box, anchor box, and ground-truth box respectively. $t$ is a vector representing the 4 coordinates of the predicted bounding box.
+
+With these definition, Loss function is defined as:
+$$
+L({p_i},{t_i}) = \frac{1}{N_{cls}}\sum_i L_{cls}(p_i,p^*_i) + \lambda \frac{1}{N_{reg}}\sum_i p^*_i L_{reg}(t_i,t^*_i)
+$$
+$i$ is the index of an anchor, $p_i$ is the predicted probability of anchor $i$ being an object. $p^*_i$ is ground-truth label, 1 for positive and 0 for negative. The $p^*_i$ of the $p^*_iL_{reg}$ means regression loss is applied only for positive anchor because It is useless to applying regression loss for negative anchor. 
+
+$N_{cls},N_{reg}, \lambda$ is the normalizing and balancing parameter for equally weighting the both loss(classification and regression).
+
+In implementation, the anchor boxes that cross image boundaries do not affect the loss. Also, the paper\cite{fasterrcnn} randomly sample 256 anchors with 128 positive and 128 negative to compute the loss function. this is because the number of negative anchors is much more than positive ones.
+
+\subsection{Sharing Features for RPN and detector}
+For sharing conv layers between RPN and detector, the paper\cite{fasterrcnn} uses \textit{Alternating training}. this method has 4-step:
+\begin{enumerate}
+    \item training the RPN initalized with an ImageNet pre-trained model.
+    \item training the separate detection network using the proposals generated by step 1. this detection network is also pre-trained with Imagenet.
+    \item the paper\cite{fasterrcnn} use the convolution layer(that extract features from image) of detector network to fine-tune the layers unique to RPN with fixed the shared conv layers.
+    \item the paper\cite{fasterrcnn} fine-tune the layers unique to detection network with fixed the shared conv layers.
+\end{enumerate}
+\section{conclusion}
+By getting region proposals from convolution network called RPN that sharing convolution layers with detector, the region proposal step is nearly cost-free and improve the proposals quality.
+Therefore, Fast R-CNN is not only more accurate but also faster than previous object detection network that uses Selective Search\cite{selsearch} or EdgeBoxes\cite{edgebox} to get region proposals.
+\newpage
+\bibliography{egbib}
+
+\end{document}
