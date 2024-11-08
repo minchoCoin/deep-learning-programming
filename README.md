@@ -15,3 +15,5 @@ All reports are written in English except pre-report of Lab1.
 
 - Lab2: Object Detection with implementing YOLO architectures
     - YOLO: [Joseph Redmon, Santosh Divvala, Ross Girshick and Ali Farhadi. You Only Look Once: Unified, Real-Time Object Detection. 2015](https://arxiv.org/abs/1506.02640)
+- Lab3: Object Detection with implementing Faster R-CNN architectures
+    - Faster R-CNN: [Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun. Faster rcnn: Towards real-time object detection with region proposal networks, 2016.](https://arxiv.org/abs/1506.01497)
