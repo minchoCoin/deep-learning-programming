@@ -17,3 +17,6 @@ All reports are written in English except pre-report of Lab1.
     - YOLO: [Joseph Redmon, Santosh Divvala, Ross Girshick and Ali Farhadi. You Only Look Once: Unified, Real-Time Object Detection. 2015](https://arxiv.org/abs/1506.02640)
 - Lab3: Object Detection with implementing Faster R-CNN architectures
     - Faster R-CNN: [Shaoqing Ren, Kaiming He, Ross Girshick, and Jian Sun. Faster rcnn: Towards real-time object detection with region proposal networks, 2016.](https://arxiv.org/abs/1506.01497)
+- Lab4: Semantic Segmentation with implementing Fully Convolutional Networks and Learning Deconvolution Network
+    - Fully Convolutional Network: [Jonathan Long, Evan Shelhamer, and Trevor Darrell. Fully convolutional networks for semantic segmentation, 2015.](https://arxiv.org/abs/1411.4038)
+    - Learning Deconvolution Network: [Hyeonwoo Noh, Seunghoon Hong, and Bohyung Han. Learning deconvolution network for semantic segmentation, 2015](https://arxiv.org/abs/1505.04366)
