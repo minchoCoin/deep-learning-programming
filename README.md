@@ -8,6 +8,8 @@ All labs contains
 
 All reports are written in English except pre-report of Lab1.
 
+We use latex([Overleaf](https://www.overleaf.com/)) and [BMVC Paper Templates](https://github.com/BritishMachineVisionAssociation/BMVCTemplate) for writing report.
+
 # index
 - Lab1: implementing VGGNet and ResNet architectures
     - VGGNet: [Karen Simonyan and Andrew Zisserman. Very deep convolutional networks for large-scale image recognition, 2015](https://arxiv.org/abs/1409.1556)
