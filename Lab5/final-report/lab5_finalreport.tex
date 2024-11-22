@@ -79,7 +79,7 @@ $$
 A_{visual} = \textbf{layernorm}(\textbf{softmax}(\textbf{q}\textbf{k}^T / \sqrt{D_h}))
 $$
 
-The visualization of the attention matrix of 3rd head is shown in Figure \ref{fig:attentionvis1}. Additionally, the visualization of the 100th row of attention matrix of 0-7th heads is shown in Figure \ref{fig:attentionvis2}. Each 196 columns(except class token) is reshaped to $14\times14$. In the attention matrix visualization, the bright regions indicate that the vision transformer pays more attention to those parts of the image.
+The visualization of the attention matrix of 4th head is shown in Figure \ref{fig:attentionvis1}. Additionally, the visualization of the 100th row of attention matrix of 0-7th heads is shown in Figure \ref{fig:attentionvis2}. Each 196 columns(except class token) is reshaped to $14\times14$. In the attention matrix visualization, the bright regions indicate that the vision transformer pays more attention to those parts of the image.
 
 \subsection{MLP for classification}
 Output of the transformer encoder is fed to MLP head, which is fully connected layer that maps 768 features to 1000 classifications. MLP head layer is also pre-trained. We only check the first rows of the output of the MLP head, corresponding to the class token index. The classification result is shown in Figure \ref{fig:classificationres}.
@@ -137,7 +137,7 @@ We implemented the part of Vision Transformer\cite{vit}, and examine and tested 
 \centering
 	\includegraphics[width=0.7\linewidth]{images/fig6.png}
 	\caption{
-		Visualization of attention matrix of 3rd head. The input image is the Santorini image. the size of attention matrix is $197\times197$}
+		Visualization of attention matrix of 4th head. The input image is the Santorini image. the size of attention matrix is $197\times197$}
 	\vspace{-2mm}
         \label{fig:attentionvis1}
 \end{figure}
