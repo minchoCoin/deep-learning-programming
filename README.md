@@ -24,3 +24,7 @@ We use latex([Overleaf](https://www.overleaf.com/)) and [BMVC Paper Templates](h
     - Learning Deconvolution Network: [Hyeonwoo Noh, Seunghoon Hong, and Bohyung Han. Learning deconvolution network for semantic segmentation, 2015](https://arxiv.org/abs/1505.04366)
 - Lab5: implementing Vision Transformer(ViT) model
     - Vision Transformer: [Alexey Dosovitskiy et al. An image is worth 16x16 words: Transformers for image recognition at scale, 2021.](https://arxiv.org/abs/2010.11929)
+- Lab6: Style Transfer
+    - Style Transfer: [L. A. Gatys, A. S. Ecker and M. Bethge, "Image Style Transfer Using Convolutional Neural Networks," 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), Las Vegas, NV, USA, 2016, pp. 2414-2423, doi: 10.1109/CVPR.2016.265.](https://ieeexplore.ieee.org/document/7780634)
+- Lab7: implementing Gradient-weighted Class Activation Mapping(Grad-CAM)
+    - Grad-CAM: [Ramprasaath R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam, Devi Parikh, and Dhruv Batra. Grad-cam: Visual explanations from deep networks via gradient-based localization. International Journal of Computer Vision, 128(2):336-359, October 2019.ISSN 1573-1405. doi: 10.1007/s11263-019-01228-7.](http://dx.doi.org/10.1007/s11263-019-01228-7.)
