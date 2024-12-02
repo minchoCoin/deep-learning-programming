@@ -27,4 +27,9 @@ We use latex([Overleaf](https://www.overleaf.com/)) and [BMVC Paper Templates](h
 - Lab6: Style Transfer
     - Style Transfer: [L. A. Gatys, A. S. Ecker and M. Bethge, "Image Style Transfer Using Convolutional Neural Networks," 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), Las Vegas, NV, USA, 2016, pp. 2414-2423, doi: 10.1109/CVPR.2016.265.](https://ieeexplore.ieee.org/document/7780634)
 - Lab7: implementing Gradient-weighted Class Activation Mapping(Grad-CAM)
-    - Grad-CAM: [Ramprasaath R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam, Devi Parikh, and Dhruv Batra. Grad-cam: Visual explanations from deep networks via gradient-based localization. International Journal of Computer Vision, 128(2):336-359, October 2019.ISSN 1573-1405. doi: 10.1007/s11263-019-01228-7.](http://dx.doi.org/10.1007/s11263-019-01228-7.)
+    - CAM: [Bolei Zhou, Aditya Khosla, Agata Lapedriza, Aude Oliva, and Antonio Torralba. Learning deep features for discriminative localization, 2015.](https://arxiv.org/abs/1512.04150)
+    - Grad-CAM: [Ramprasaath R. Selvaraju, Michael Cogswell, Abhishek Das, Ramakrishna Vedantam, Devi Parikh, and Dhruv Batra. Grad-cam: Visual explanations from deep networks via gradient-based localization. International Journal of Computer Vision, 128(2):336-359, October 2019.ISSN 1573-1405. doi: 10.1007/s11263-019-01228-7.](http://dx.doi.org/10.1007/s11263-019-01228-7)
+- Lab8: implementing CLIP
+    - CLIP: [Alec Radford et al. Learning transferable visual models from natural language supervision, 2021.](https://arxiv.org/abs/2103.00020)
+        - ref: [Simple Implementation of OpenAI CLIP model: A Tutorial](https://towardsdatascience.com/simple-implementation-of-openai-clip-model-a-tutorial-ace6ff01d9f2)
+        - code ref: [https://github.com/moein-shariatnia/OpenAI-CLIP](https://github.com/moein-shariatnia/OpenAI-CLIP)
