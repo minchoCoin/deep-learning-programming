@@ -33,3 +33,6 @@ We use latex([Overleaf](https://www.overleaf.com/)) and [BMVC Paper Templates](h
     - CLIP: [Alec Radford et al. Learning transferable visual models from natural language supervision, 2021.](https://arxiv.org/abs/2103.00020)
         - ref: [Simple Implementation of OpenAI CLIP model: A Tutorial](https://towardsdatascience.com/simple-implementation-of-openai-clip-model-a-tutorial-ace6ff01d9f2)
         - code ref: [https://github.com/moein-shariatnia/OpenAI-CLIP](https://github.com/moein-shariatnia/OpenAI-CLIP)
+- Lab9: Stable Diffusion fine-tuning with LoRA
+    - stable diffusion: [Robin Rombach,Andreas Blattmann,Dominik Lorenz,Patrick Esser,and Björn Ommer. High-resolution image synthesis with latent diffusion models, 2022.](https://arxiv.org/abs/2112.10752)
+    - LoRA : [Edward J.Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean Wang, Lu Wang,and Weizhu Chen.Lora:Low-rank adaptation of large language models,2021.](https://arxiv.org/abs/2106.09685)
